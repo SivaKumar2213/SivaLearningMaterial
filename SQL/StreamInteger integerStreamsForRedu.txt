@@ -1,0 +1,24 @@
+Stream<Integer> integerStreamsForReduceMethodInitialValue = Stream.of(1, 2, 3, 4, 5);
+
+Optional<Integer> resultForReduceMethodInitialValue = integerStreamsForReduceMethodInitialValue
+        .peek(integer -> System.out.println(integer))  // Debugging: Prints each integer
+        .reduce(0, (Integer a, Integer b) -> {
+            System.out.println("Integer a: " + a + ": Integer b: " + b + " and Sum value is: " + (a + b));
+            return a + b;  // Binary operator: Sum the integers
+        });
+
+if (resultForReduceMethodInitialValue.isPresent()) {
+    System.out.println("Result for reduce method with initial value using lambda: " + resultForReduceMethodInitialValue.get());
+}
+System.out.println("-----------------------------------------------------------------------------------------------");
+System.out.println("The sum method in IntStream can be achieved by Stream also with the reduce() method by using method reference.");
+
+
+
+
+Optional<Integer> resultForReduceMethodInitialValue = integerStreamsForReduceMethodInitialValue
+			.peek(integer-> System.out.println(integer))
+			.reduce(0, (Integer a,Integer b)-> {
+					System.out.println("Integer a :"+a+": Integer b :"+b+" and Sum value is:"+(a+b));
+					return a+b;
+					});

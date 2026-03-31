@@ -1,0 +1,52 @@
+Internet is required in BOTH cases
+
+To download code from SVN → internet required
+
+To download (clone) code from GIT → internet required
+
+So your doubt is absolutely valid ✅
+
+❓ Then what is the real difference?
+
+The difference is AFTER downloading, not during downloading.
+
+🔴 SVN – after download
+
+You download only the latest code
+
+History stays on the server
+
+For almost every action:
+
+Commit
+
+View history
+
+Compare versions
+➡️ Internet is required again
+
+📌 No internet = almost no work
+
+🟢 GIT – after download (BIG difference)
+
+You download:
+
+Code
+
+Full history
+
+After that, you can:
+
+Write code
+
+Commit
+
+View old versions
+
+Create branches
+➡️ NO internet needed
+
+📌 Internet is required only when sharing (push / pull)
+
+Golden Interview Line:
+Both SVN and GIT use a server machine. In SVN, checkout downloads only the latest version of the code, while in GIT, clone downloads the entire repository including full history along with the latest code.”

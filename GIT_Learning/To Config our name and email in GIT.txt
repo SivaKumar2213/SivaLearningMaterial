@@ -1,0 +1,7 @@
+C:\Users\DELL>git config --global user.name "siva"
+
+C:\Users\DELL>git config --global user.email "22sivaramesh@gmail.com"
+
+C:\Users\DELL>git config --global --list
+user.name=siva
+user.email=22sivaramesh@gmail.com

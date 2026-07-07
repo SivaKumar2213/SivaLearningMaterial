@@ -1,0 +1,65 @@
+package InputAndOutput;
+//Serialization is the process of converting a Java object into a sequence of bytes 
+//so that the object can be:1)stored in a file,2)transferred over a network,3)saved in a database
+//These bytes can later be converted back into the same object, which is called Deserialization.
+//Serializable interface which is present in package java.io.Serializable is used
+//Serializable interface is A marker interface,It has no methods
+//It tells JVM: “This object is allowed to be serialized.”
+//To serialize an object, the class must implement the Serializable interface.
+//if a class does NOT implement Serializable but we try to serialize it?
+//JVM throws:java.io.NotSerializableException
+//Streams used for Serialization
+//To write the serialized object to a file, we typically use:
+//FileOutputStream-->Writes raw bytes to a file.
+//ObjectOutputStream-->Converts the object → bytes (Serialization)
+//Improving performance : You can wrap the stream inside : BufferedOutputStream
+//BufferedOutputStream -> This reduces the number of disk hits and makes writing faster and more efficient.
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class serialization {
+
+	public static void main(String[] args) {
+String path="D:\\SivaLearn\\File\\InputOutput\\serializeStudentData.txt";
+FileOutputStream fos=null;
+BufferedOutputStream bos=null;
+ObjectOutputStream oos=null;
+File file1=new File(path);
+try {
+	Student s1=new Student(1,10,"Rohan");
+	fos=new FileOutputStream(file1);
+	bos=new BufferedOutputStream(fos);
+	oos=new ObjectOutputStream(bos);
+	fos.close();
+	bos.close();
+	oos.close();
+} catch (FileNotFoundException e) {
+	e.printStackTrace();
+} catch (IOException e) {
+	e.printStackTrace();
+}
+	}
+
+}
+class Student{
+	private int id;
+	private int age;
+	private String name;
+	public Student(int id, int age, String name) {
+		super();
+		this.id = id;
+		this.age = age;
+		this.name = name;
+	}
+	
+	public void display() {
+		System.out.println("Student ID : "+id);
+		System.out.println("Student Age : "+age);
+		System.out.println("Student Name : "+name);
+	}
+}

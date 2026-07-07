@@ -1,0 +1,24 @@
+package OOPS;
+
+public class methods {
+
+	public static void main(String[] args) {
+
+	}
+class Car{
+	public String colour(int num) {
+		String colour;
+		Switch(num){
+			case 1:
+				colour="Red";
+				break;
+		}
+		return colour;
+	}
+	
+}
+public void Switch(int num) {
+	// TODO Auto-generated method stub
+	
+}
+}

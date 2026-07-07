@@ -1,0 +1,25 @@
+package OOPS;
+//Static Method can be called by using Class Name
+//
+//we cannot use directly the non static variable inside static method,because it does not know which objects variable is that
+//But indirectly if we are having the object reference by passing that we can use non static variable
+public class staticMethod {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+class Student{
+	String name;
+	int rollNumber;
+	static String schoolName;
+	
+	public void showStudentDetails(){
+		System.out.println("Student Name :"+name+" Roll Number: "+" School Name :"+schoolName);
+	}
+	public static void showStudentDetails1(){
+		System.out.println("Student Name :"+name+" Roll Number: "+" School Name :"+schoolName);
+	}
+}
+	

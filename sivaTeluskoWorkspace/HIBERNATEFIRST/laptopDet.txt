@@ -1,0 +1,6 @@
+Laptop Details : 
+Name : Dell
+Colour : Grey and Blue
+Condition : Good
+New/Old : Old
+

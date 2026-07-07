@@ -1,0 +1,61 @@
+package OOPS;
+//In Java, multilevel inheritance means a chain of inheritance — 
+//where a class is derived from another class, which is itself derived from another class.
+
+//In other words, a child class becomes the parent for another child class.
+public class multiLevelInheritance {
+
+	public static void main(String[] args) {
+		Calc1 c=new Calc1();//if we don't compile the Calc class also when this line starts to execute it will automatically compile the Calc java
+      int a= c.add(4, 5);
+      int b=c.sub(5, 3);
+      c.sum=20;
+       System.out.println("Add : "+a+" Sub : "+b);
+       c.show();
+       System.out.println("---------------------------------------------------------");
+       AdvanceCalc1 adv=new AdvanceCalc1();//if we want to use add and sub method also then we should use extends keyword
+       int a1=adv.div(15, 4);
+       int b1=adv.mul(3, 5);
+       int c1= adv.add(4, 5);
+       int d1=adv.sub(5, 3);
+       adv.sum=30;
+       System.out.println("Div : "+a1+" Mul : "+b1+" Add : "+c1+" Sub : "+d1);
+       adv.show();
+       System.out.println("---------------------------------------------------------");
+       VeryAdvanceCalc veryadv=new VeryAdvanceCalc();
+       int a2=veryadv.div(35, 4);
+       int b2=veryadv.mul(7, 5);
+       int c2= veryadv.add(42, 5);
+       int d2=veryadv.sub(56, 3);
+       Double e2=veryadv.power(3, 3);
+       veryadv.sum=40;
+       System.out.println("Div : "+a1+" Mul : "+b1+" Add : "+c1+" Sub : "+d1+" Power : "+e2);
+       veryadv.show();
+	}
+
+}
+class Calc1{
+	int sum;
+	public int add(int n1,int n2) {
+		return n1+n2;
+	}
+	public int sub(int n1,int n2) {
+		return n1-n2;
+	}
+	public void show() {
+		System.out.println("The sum value is : "+sum);
+	}
+}
+class AdvanceCalc1 extends Calc{
+	public int div(int n1,int n2) {
+		return n1/n2;
+	}
+	public int mul(int n1,int n2) {
+		return n1*n2;
+	}
+}
+class VeryAdvanceCalc extends AdvanceCalc1{
+	public double power(int n1,int n2) {
+		return Math.pow(n1, n2);
+	}
+}

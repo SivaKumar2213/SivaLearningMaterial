@@ -1,0 +1,25 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+//Advanced of Launch Application Class java file
+public class PersistLaunchApplicationClass {
+
+	public static void main(String[] args) {
+        Configuration config=null;
+        SessionFactory sessionFactory=null;
+        Session session=null;
+        
+        try {
+        	
+        }
+        catch(HibernateException e) {
+        	
+        }
+        
+	}
+
+}

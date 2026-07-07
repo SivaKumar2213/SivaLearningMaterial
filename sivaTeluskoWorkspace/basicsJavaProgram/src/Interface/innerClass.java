@@ -1,0 +1,38 @@
+package Interface;
+//Inner class we are creating a class inside the class
+//When we compile the inner class , it will create the .class file outerClass$innerclass name
+//Ex : A$B.class
+//if we want to create a object for inner class first we need to create the object of outer class then befor keyword we should use that object 
+//Ex : A obj=new A();
+//     A.B ab=obj.new B();
+//we can create the inner class as static also
+//if the inner class is static then we can directly use the outer class name . and then inner class name
+//ex :A is a outer class and B is a static inner class A.B A=new A.B();
+public class innerClass {
+	public static void main(String[] args) {
+A obj=new A();
+A.B ab=obj.new B();
+obj.show();
+ab.config();
+
+//if the inner class is static
+A.C c=new A.C();
+c.authentication();
+	}
+}
+class A{
+	int age;
+	public void show() {
+		System.out.println("In Show");
+	}
+	class B{
+		public void config() {
+			System.out.println("In Config");
+		}
+	}
+	static class C{
+		public void authentication() {
+			System.out.println("In authentication");
+		}
+	}
+}

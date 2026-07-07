@@ -1,0 +1,12 @@
+package OOPS;
+//Final can be used with variable,methods,class
+//Variable - if we use once final we cannot assign value further
+//Class - if class is declared as final it cannot be extend by another class stops inheritance concept
+//Methods- if method is final , we cannot override the method 
+public class finalKeyword {
+
+	public static void main(String[] args) {
+
+	}
+
+}

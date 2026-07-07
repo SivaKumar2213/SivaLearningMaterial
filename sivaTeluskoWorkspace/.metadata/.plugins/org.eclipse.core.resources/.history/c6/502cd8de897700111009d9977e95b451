@@ -1,0 +1,29 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class LaunchApplicationClass {
+
+	public static void main(String[] args) {
+        //First Configuration Object
+		Configuration config=new Configuration();
+		//Second configure hibernate.cfg.xml file to Configuration object
+		//If we change the already created name , we need to give the fully qualified name
+		config.configure();
+		
+		//Third create sessionfactory object
+		SessionFactory sessionFactory=config.buildSessionFactory();
+		
+		//Four Build the session object from SessionFactory
+		Session session=sessionFactory.openSession();
+		
+		//Five Begin the Transaction with the session
+		Transaction transaction=session.beginTransaction();
+		
+		
+	}
+
+}

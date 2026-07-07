@@ -1,0 +1,66 @@
+package Com.basicsHibernateConnections;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.StudentTable;
+
+public class UpdateOrDeleteLaunchApplicationClass {
+
+	public static void main(String[] args) {
+           Configuration config=null;
+           SessionFactory sessionFactory=null;
+           Session session=null;
+           Transaction transaction=null;
+           boolean transUpdateFlag=false;
+           boolean transDeleteFlag=false;
+           try {
+        	   config=new Configuration();
+        	   config.addAnnotatedClass(StudentTable.class);
+        	   config.configure();
+        	   session=config.buildSessionFactory().openSession();
+        	   transaction= session.beginTransaction();
+        	   StudentTable st=new StudentTable();
+        	   st.setId(4);
+        	   SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+        	   Date dob1 = null;
+       		   dob1 = sdf.parse("22-09-1988");
+       		   st.setDateOfBirth(dob1);
+       		   st.setName("RajAvel");
+               st.setCity("Salem");
+               st.setAge(36);
+       		 //  session.update(st);//The update method was depricated so we can use merge
+               session.merge(st);
+       		transUpdateFlag=true;
+       		
+       		st.setId(5);
+       		session.delete(st);//The delete mesthod was depricated so we can use remove
+       		transDeleteFlag=true;
+       		
+        	   
+        	   
+           }
+           catch(HibernateException e) {
+        	   e.printStackTrace();
+           }
+           catch(Exception e1) {
+        	   e1.printStackTrace();
+           }
+           finally {
+        	   if(transUpdateFlag && transDeleteFlag) {
+        		   transaction.commit();
+        	   }else {
+        		   transaction.rollback();
+        	   }
+           }
+        		   
+		
+	}
+
+}

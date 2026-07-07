@@ -1,0 +1,57 @@
+package Com.basicsHibernateConnections;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.StudentTable;
+
+public class UpdateOrDeleteLaunchApplicationClass {
+
+	public static void main(String[] args) {
+           Configuration config=null;
+           SessionFactory sessionFactory=null;
+           Session session=null;
+           Transaction transaction=null;
+           boolean transUpdateFlag=false;
+           boolean transDeleteFlga=false;
+           try {
+        	   config=new Configuration();
+        	   config.addAnnotatedClass(StudentTable.class);
+        	   config.configure();
+        	   session=config.buildSessionFactory().openSession();
+        	   transaction= session.beginTransaction();
+        	   StudentTable st=new StudentTable();
+        	   st.setId(4);
+        	   SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+        	   Date dob1 = null;
+       		   dob1 = sdf.parse("22-09-1988");
+       		   st.setDateOfBirth(dob1);
+       		   session.update(st);//The update method was depricated so we can use merge
+       		transUpdateFlag=true;
+        	   
+        	   
+           }
+           catch(HibernateException e) {
+        	   e.printStackTrace();
+           }
+           catch(Exception e1) {
+        	   e1.printStackTrace();
+           }
+           finally {
+        	   if(transUpdateFlag) {
+        		   transaction.commit();
+        	   }else {
+        		   transaction.rollback();
+        	   }
+           }
+        		   
+		
+	}
+
+}

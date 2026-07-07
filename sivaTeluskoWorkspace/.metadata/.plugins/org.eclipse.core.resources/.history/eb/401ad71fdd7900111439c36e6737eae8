@@ -1,0 +1,34 @@
+package Com.BasicsHibernate.model;
+
+import java.util.Date;
+
+public class OrderDetails {
+public Integer getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
+	public String getOrderAmount() {
+		return orderAmount;
+	}
+	public void setOrderAmount(String orderAmount) {
+		this.orderAmount = orderAmount;
+	}
+	public String getOrderProductName() {
+		return orderProductName;
+	}
+	public void setOrderProductName(String orderProductName) {
+		this.orderProductName = orderProductName;
+	}
+	public Date getOrderDate() {
+		return orderDate;
+	}
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
+	}
+private Integer orderId;
+private String orderAmount;
+private String orderProductName;
+private Date orderDate;
+}

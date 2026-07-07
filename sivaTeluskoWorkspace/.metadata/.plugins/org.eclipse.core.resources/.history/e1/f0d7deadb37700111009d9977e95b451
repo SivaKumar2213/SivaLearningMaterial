@@ -1,0 +1,52 @@
+package Com.basicsHibernateConnections;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.StudentTable;
+
+//Advanced of Launch Application Class java file
+public class PersistLaunchApplicationClass {
+
+	public static void main(String[] args) {
+        Configuration config=null;
+        SessionFactory sessionFactory=null;
+        Session session=null;
+        Transaction transaction=null;
+        boolean transFlag=false
+        try {
+        	config=new Configuration();
+      //If we dont use Mapping in hibernate.config.xml means we should use the below line
+        session= config.addAnnotatedClass(StudentTable.class).configure().buildSessionFactory().openSession();
+        transaction= session.beginTransaction();
+        StudentTable st=new StudentTable();
+        st.setId(2);
+        st.setName("Ramachandran");
+        st.setCity("Mumbai");
+        st.setAge(29);
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		Date dob = null;
+		st.setDateOfBirth(dob);
+		session.saveOrUpdate(st);//This method will create an entry ,If the ID is not present 
+		                         //If the entry is present it will update the entry
+		
+        
+        }
+        catch(HibernateException e) {
+        	e.printStackTrace();
+        }
+        catch(Exception e1) {
+        e1.printStackTrace();
+        }
+        finally {
+        	
+        }
+	}
+
+}

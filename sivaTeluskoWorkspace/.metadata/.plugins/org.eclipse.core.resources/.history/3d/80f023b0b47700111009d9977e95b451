@@ -1,0 +1,71 @@
+package Com.basicsHibernateConnections;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.StudentTable;
+
+//Advanced of Launch Application Class java file
+public class PersistLaunchApplicationClass {
+
+	public static void main(String[] args) {
+        Configuration config=null;
+        SessionFactory sessionFactory=null;
+        Session session=null;
+        Transaction transaction=null;
+        boolean transFlag=false;
+        boolean transFlag1=false;
+        try {
+        	config=new Configuration();
+      //If we dont use Mapping in hibernate.config.xml means we should use the below line
+        session= config.addAnnotatedClass(StudentTable.class).configure().buildSessionFactory().openSession();
+        transaction= session.beginTransaction();
+        StudentTable st=new StudentTable();
+        st.setId(3);//If we change the ID to new number it will create an entry
+        st.setName("Raj");
+        st.setCity("Coimbatore");
+        st.setAge(36);
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+		Date dob = null;
+		dob = sdf.parse("22-09-1991");
+		st.setDateOfBirth(dob);
+		session.saveOrUpdate(st);//This method will create an entry ,If the ID is not present 
+		                         //If the entry is present it will update the entry
+		transFlag=true;
+	//save and saveOrUpdate method is a depricated one ,So we can use persist to insert the data
+		StudentTable st1=new StudentTable();
+		st1.setId(3);
+		st1.setName("Raj");
+		st1.setCity("Coimbatore");
+		st1.setAge(36);
+		Date dob1 = null;
+		dob1 = sdf.parse("22-09-1988");
+		st.setDateOfBirth(dob1);
+		session.saveOrUpdate(st);
+		
+		
+        
+        }
+        catch(HibernateException e) {
+        	e.printStackTrace();
+        }
+        catch(Exception e1) {
+        e1.printStackTrace();
+        }
+        finally {
+        	if(transFlag && transFlag1 ) {
+        		transaction.commit();
+        	}else {
+        		transaction.rollback();
+        	}
+        	session.close();
+        }
+	}
+
+}

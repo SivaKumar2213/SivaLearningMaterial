@@ -1,0 +1,10 @@
+package Com.BasicsHibernate.model;
+
+import java.util.Date;
+
+public class OrderDetails {
+private Integer orderId;
+private String orderAmount;
+private String orderProductName;
+private Date orderDate;
+}

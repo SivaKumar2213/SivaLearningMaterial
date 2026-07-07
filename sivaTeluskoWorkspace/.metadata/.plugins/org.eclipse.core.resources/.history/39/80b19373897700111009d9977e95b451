@@ -1,0 +1,15 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.cfg.Configuration;
+
+public class LaunchApplicationClass {
+
+	public static void main(String[] args) {
+        //First Configuration Object
+		Configuration config=new Configuration();
+		//Second configure hibernate.cfg.xml file to Configuration object
+		//If we change the already created name , we need to give the fully qualified name
+		config.configure();
+	}
+
+}

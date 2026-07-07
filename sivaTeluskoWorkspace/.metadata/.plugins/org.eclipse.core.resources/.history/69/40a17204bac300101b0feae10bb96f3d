@@ -1,0 +1,14 @@
+package Interface;
+
+public class abstractAndAnonymousInnerClass {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+abstract class Car1{
+	public abstract void show();
+	public abstract void congig();
+	
+}

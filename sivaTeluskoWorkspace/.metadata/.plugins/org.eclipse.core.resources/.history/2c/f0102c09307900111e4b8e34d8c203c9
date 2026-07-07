@@ -1,0 +1,42 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateUsingJavaCodeConnections {
+
+	public static void main(String[] args) {
+Configuration config=null;
+Session session=null;
+Transaction transaction=null;
+try {
+	config=new Configuration();//After this line in the previous program and all we used config.Configure()
+	                           //which will map the properties value from hibernate.cfg.xml
+	
+	config.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
+	config.setProperty("hibernate.connection.password", "Apoorva@2020");
+	config.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/jdbclearnsql");
+	config.setProperty("hibernate.connection.username", "root");	
+	config.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+	config.setProperty("hibernate.hbm2ddl.auto", "update");
+	config.setProperty("hibernate.format_sql", "true");
+	config.setProperty("hibernate.show_sql", "true");
+	//we dont want to call configure method because we are setting the value to already config object only
+	
+	
+	
+}
+catch(HibernateException e) {
+	e.printStackTrace();
+}
+catch(Exception e1) {
+	e1.printStackTrace();
+}
+finally {
+	
+}
+	}
+
+}

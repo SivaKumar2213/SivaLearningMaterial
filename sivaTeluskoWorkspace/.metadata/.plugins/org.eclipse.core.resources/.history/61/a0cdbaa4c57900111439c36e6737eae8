@@ -1,0 +1,10 @@
+package Com.BasicsHibernate.model;
+
+public class ProductTable {
+private Integer productId;
+private String productName;
+private String productAmount;
+private String purchaserName;
+
+//If we add PaymentTable mapping here then it is  Bidirectional;
+}

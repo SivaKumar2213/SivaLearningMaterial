@@ -1,0 +1,27 @@
+package Com.basicsHibernateConnections;
+
+import java.lang.module.Configuration;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+
+public class DataRetrivalFromDBLaunchAppClass {
+
+	public static void main(String[] args) {
+      Configuration config=null;
+      Session session=null;
+      try {
+    	  
+      }
+      catch(HibernateException e) {
+    	  e.printStackTrace();
+      }
+      catch(Exception e1) {
+    	  e1.printStackTrace();
+      }
+      finally {
+    	  session.close();
+      }
+	}
+
+}

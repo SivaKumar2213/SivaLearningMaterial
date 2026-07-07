@@ -1,0 +1,33 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.StudentTable;
+
+public class selectiveInsertwithTransientAnnotationLaunchAppClass {
+
+	public static void main(String[] args) {
+		Configuration config=null;
+        SessionFactory sessionFactory=null;
+        Session session=null;
+        Transaction transaction=null;
+        boolean transFlag=false;
+        try {
+        	config=new Configuration();
+      //If we dont use Mapping in hibernate.config.xml means we should use the below line
+        session= config.addAnnotatedClass(StudentTable.class).configure().buildSessionFactory().openSession();
+        transaction= session.beginTransaction();
+        }
+        catch(HibernateException e) {
+        	e.printStackTrace();
+        }
+        catch(Exception e1) {
+        	e1.printStackTrace();
+        }
+	}
+
+}

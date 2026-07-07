@@ -1,0 +1,35 @@
+package OOPS;
+//It means wrapping data (variables) and methods (functions) that operate on that data into a single unit — 
+//a class — and restricting direct access to the internal details of that class.
+//“Encapsulation is about hiding the internal state of an object and only allowing controlled access through methods.”//
+//If we keep the variables as private ,then we cannot directly access them by creating a  object
+//instead of that we need to have a methods to set and get the values in the class , 
+//then we can create a object and calls the method to set and and get the value 
+public class encapsulation {
+
+	public static void main(String[] args) {
+Student1 s1=new Student1();
+s1.setAge(11);
+s1.setName("Mani");
+System.out.println("Student Name : "+s1.getName()+ " And Age is : "+ s1.getAge());
+	}
+
+}
+class Student1{
+	private int age;
+	private String name;
+	
+	public int getAge() {
+		return age;
+	}
+	public String getName() {
+		return name;
+	}
+	
+	public void setAge(int a) {
+		age=a;
+	}
+	public void setName(String n) {
+		name=n;
+	}
+}

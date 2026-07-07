@@ -1,0 +1,74 @@
+package Com.basicsHibernateConnections;
+
+import java.time.LocalDate;
+import java.util.Properties;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.CustomerDetails;
+import Com.BasicsHibernate.model.OrderDetails;
+
+public class HibernateOnetoManyMapping {
+
+	@SuppressWarnings("serial")
+	public static void main(String[] args) {
+		Configuration config=null;
+        Session session=null;
+        Transaction transaction=null;
+        boolean flag=false;
+        try {
+     	   config=new Configuration();
+     	   config.setProperties(new Properties()
+     			   {
+     		   {
+     			   load(HibernateOneToOneMapping.class.getClassLoader().getResourceAsStream("hibernate1.properties"));
+     		   }
+     		   
+     			   });
+     	   config.addAnnotatedClass(OrderDetails.class);
+     	   config.addAnnotatedClass(CustomerDetails.class);
+     	   session=config.buildSessionFactory().openSession();
+     	   transaction=session.beginTransaction();
+     	  CustomerDetails cd=new CustomerDetails();
+     	  
+     	  //oneToMany unidirection only customer knows the order details
+     	 cd.setCustomerAge(25);
+     	 cd.setCustomerName("Ramakrishnan");
+     	 
+     	OrderDetails od1=new OrderDetails();
+     	OrderDetails od2=new OrderDetails();
+     	od1.setOrderDate(LocalDate.now());
+     	od1.setOrderProductName("Coffee");
+     	od1.setOrderAmount("50");
+     	
+     	od2.setOrderDate(LocalDate.now());
+     	od2.setOrderProductName("Idly");
+     	od2.setOrderAmount("80");
+     	
+     	cd.getOrderArrayList().add(od1);
+    	cd.getOrderArrayList().add(od2);
+    	//oneToMany unidirection only customer knows the order details
+    	
+    	//OneToMany bidirectional customer knows order details and order knows customer details
+    	
+    	
+    	session.persist(cd);
+    	flag=true;
+     	
+	}
+        catch(Exception e) {
+        	e.printStackTrace();
+        }
+        finally {
+        	if(flag) {
+        		transaction.commit();
+        	}else {
+        		transaction.rollback();
+        	}
+        	session.close();
+        }
+	}    
+
+}

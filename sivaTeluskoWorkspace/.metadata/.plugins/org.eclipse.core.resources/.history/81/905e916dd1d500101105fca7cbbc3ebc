@@ -1,0 +1,14 @@
+package com.javabasic.fortesting;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class CalcTest {
+
+	@Test
+	public void test() {
+		System.out.println("The is the First Ran");
+	}
+
+}

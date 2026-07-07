@@ -1,0 +1,56 @@
+package Com.basicsHibernateConnections;
+
+import java.util.Properties;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.PaymentTable;
+import Com.BasicsHibernate.model.ProductTable;
+
+public class HibernateOneToOneMapping {
+
+	public static void main(String[] args) {
+               Configuration config=null;
+               Session session=null;
+               Transaction transaction=null;
+               try {
+            	   config=new Configuration();
+            	   config.setProperties(new Properties()
+            			   {
+            		   {
+            			   load(HibernateOneToOneMapping.class.getClassLoader().getResourceAsStream("hibernate1.properties"));
+            		   }
+            		   
+            			   });
+            	   config.addAnnotatedClass(PaymentTable.class);
+            	   config.addAnnotatedClass(ProductTable.class);
+            	   PaymentTable pt=new PaymentTable();
+            	   PaymentTable pt1=new PaymentTable();
+            	   ProductTable pdt=new ProductTable();
+            	   ProductTable pdt1=new ProductTable();
+            	   session=config.buildSessionFactory().openSession();
+            	   transaction=session.beginTransaction();
+            	   pt.setPayerName("SivaKKumar");
+            	   pt.setPaymentAmount("1500");
+            	   pt.setPaymentMode("Cash");
+            	   pdt.setProductName("Shirt");
+            	   pdt.setProductAmount(pt.getPaymentAmount());
+            	   pdt.setPurchaserName(pt.getPayerName());
+            	   
+
+               }
+               catch(HibernateException e) {
+            	   e.printStackTrace();
+               }
+               catch(Exception e1) {
+            	   e1.printStackTrace();
+               }
+               finally {
+            	   
+               }
+	}
+
+}

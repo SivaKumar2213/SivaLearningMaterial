@@ -1,0 +1,38 @@
+package InputAndOutput;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+//Deserialization is
+//These bytes can later be converted back into the same object, which is called Deserialization.
+public class deserialization {
+
+	public static void main(String[] args) {
+		String path="D:\\SivaLearn\\File\\InputOutput\\serializeStudentData.txt";
+		FileInputStream fos=null;
+		BufferedInputStream bos=null;
+		ObjectInputStream oos=null;
+		File file1=new File(path);
+		try {
+			
+			fos=new FileOutputStream(file1);
+			bos=new BufferedOutputStream(fos);
+			oos=new ObjectOutputStream(bos);
+			oos.writeObject(s1);
+			oos.writeObject(s2);
+			System.out.println("The Student object is stored in file in form of Series of Bytes ");
+			oos.close();
+			bos.close();
+			fos.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

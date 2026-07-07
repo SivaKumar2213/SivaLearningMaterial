@@ -1,0 +1,19 @@
+package Com.BasicsHibernate.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+
+@Entity
+public class Courses {
+	
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@SequenceGenerator(name = "course",sequenceName = "course_my_seq",initialValue = 100,allocationSize = 1)
+private Integer courseId;
+private String courseName;
+private String courseAmount;
+
+}

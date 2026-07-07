@@ -1,0 +1,38 @@
+package OOPS;
+//We can instante static variable in constructor 
+//but every time we create a object it will initiate the static variable which is no use
+//So only we can static block to initiate the static variable it will execute only once even n number of objects are created
+//Because Static block loads when class is loaded ,
+       //1)whenever we create a object first time it will load the class and create a object 
+      //2)Second time if we are trying to create an object for the same class it wont load the class
+      //3)In the below program three times created Mobile1 object but static log prints once and constructor executed three times.
+//If our requirement is to only load the class means example for connecting JDBC line number 16
+public class staticBlock {
+
+	public static void main(String[] args) throws ClassNotFoundException {
+		
+		  Mobile1 m1=new Mobile1();
+		  Mobile1 m2=new Mobile1(); 
+		  Mobile1 m3=new Mobile1();
+		 
+		Class.forName("OOPS.Mobile1");
+	}
+
+}
+class Mobile1{
+	String name;
+	int price;
+	static String type;
+	
+	public Mobile1() {
+		name="";
+		price=20;
+		type="Phone";
+		System.out.println("Inside constructor");
+	}
+	static {
+		type="Smart Phone";
+		System.out.println("Inside Static Block");
+	}
+	
+}

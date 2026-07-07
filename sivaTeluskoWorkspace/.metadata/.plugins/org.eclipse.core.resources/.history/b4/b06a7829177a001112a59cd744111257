@@ -1,0 +1,18 @@
+package Com.BasicsHibernate.model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Lob;
+
+@Entity
+public class LaptopDetails {
+private Integer lapTopId;
+private String laptopName;
+private String price;
+@Lob//Used to store largeObject like image in bytes and text files in character
+@Column(length = 100000)
+private byte[] image;
+@Lob
+private char[] laptopDetailsText;
+
+}

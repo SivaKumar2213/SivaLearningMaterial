@@ -1,0 +1,57 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.EmployeeTable;
+
+//Hibernate Methods to Fetch Data
+//1. get() – Eager Loading
+//get() is a Hibernate Session method.
+//It immediately executes the SQL query.
+//It returns the actual entity object.
+//If the record is not found, it returns null.
+//2. load() – Lazy Loading (Deprecated)
+//load() first returns a proxy object.
+//No SQL is executed initially.
+//SQL executes only when you access a property other than the ID.
+//If the record does not exist, it throws an exception (ObjectNotFoundException) when the proxy is initialized.
+//Deprecated in Hibernate 6.
+//3. getReference() – Lazy Loading
+//getReference() is a JPA EntityManager method.
+//It behaves almost the same as load().
+//Returns a proxy initially.
+//SQL executes only when a non-ID property is accessed.
+//If the record doesn't exist, an EntityNotFoundException is thrown when the proxy is initialized.
+public class LazyandEagerLodaingforDataRetrival {
+
+	public static void main(String[] args) {
+		Configuration config=null;
+	      Session session=null;
+	      try {
+	    	   session=new Configuration().addAnnotatedClass(EmployeeTable.class).configure().buildSessionFactory().openSession();
+	    	   EmployeeTable employeeTable = session.get(EmployeeTable.class, 1);//Eager Loading or Immediate Retrival
+	    	   System.out.println(employeeTable);
+	    	  //Lazy Loading will create an object two times
+	    	   System.out.println("LazyLoading Starts");
+	    	   session=new Configuration().addAnnotatedClass(EmployeeTable.class).configure().buildSessionFactory().openSession();
+	    	   EmployeeTable employeeTable1 = session.load(EmployeeTable.class, 1);//Eager Loading or Immediate Retrival
+               System.out.println("EmpId : "+employeeTable1.getEmpId());
+               System.out.println("Before Actual Object Cretated");
+             System.in.read();//To check the Lazy loading Actual object created we need to press enter
+               System.out.println("Emp Salary : "+employeeTable1.getEmpSalary());
+               System.out.println("Emp Age : "+employeeTable1.getEmpAge());
+	      }
+	      catch(HibernateException e) {
+	    	  e.printStackTrace();
+	      }
+	      catch(Exception e1) {
+	    	  e1.printStackTrace();
+	      }
+	      finally {
+	    	  session.close();
+	      }
+	}
+
+}

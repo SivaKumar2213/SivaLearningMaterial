@@ -1,0 +1,8 @@
+package Com.BasicsHibernate.model;
+
+public class PaymentTable {
+private Integer paymentId;
+private String paymentMode;
+private String paymentAmount;
+private String payerName;
+}

@@ -1,0 +1,17 @@
+package com.Assert.TimeOut;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.time.Duration;
+
+import org.junit.jupiter.api.Test;
+
+class sortedArrayTestForassertTimout {
+	sortedArrayinLoop sa=new sortedArrayinLoop();
+	@Test
+	void test() {
+		int num[]= {2,6,1,3,5};
+		assertTimeout(Duration.ofMillis(10), ()->sa.sortedArray(null));
+	}
+
+}

@@ -1,0 +1,30 @@
+package OOPS;
+
+public class methodOverloading {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+
+class add {
+	public int add(int n1,int n2) {
+		return n1+n2;
+	}
+	
+	/*public double add(int n1,int n2) {
+		return n1+n2;
+	}*/
+	//Even the return type change also we will get compile time error as duplicate method only 
+	//the input parameterized and data type of that should be different then only it will allow
+	
+	public double add(double n1,int n2) {
+		return n1+n2;
+	}
+	
+	public int add(double n1,int n2,int n3) {
+		return n1+n2+n3;
+	}
+
+}

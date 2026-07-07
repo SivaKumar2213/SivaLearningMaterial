@@ -1,0 +1,35 @@
+package Interface;
+//Class --> Class : extends
+//Class --> Interface : implements
+//interface --> Interface : extends
+public class moreOnInterface {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+interface vechicle{
+	void start();
+}
+interface aeroplane extends vechicle{
+	void fly();
+}
+interface bike extends vechicle{
+	void run();
+}
+class details implements aeroplane,car{
+
+	public void start() {
+		System.out.println("Engine Started");
+	}
+
+	public void run() {
+		System.out.println("Car running");
+	}
+
+	public void fly() {
+		System.out.println("Aeroplane flying");
+	}
+	
+}

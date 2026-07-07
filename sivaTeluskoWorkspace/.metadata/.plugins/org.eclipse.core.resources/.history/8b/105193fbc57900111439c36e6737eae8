@@ -1,0 +1,9 @@
+package Com.basicsHibernateConnections;
+
+public class HibernateOneToOneMapping {
+
+	public static void main(String[] args) {
+               
+	}
+
+}

@@ -1,0 +1,27 @@
+package OOPS;
+//Inbuilt of we call any constructor ,the super() will be there and call the parent class constructor 
+public class thisAndSuperKeyword {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+class A{
+
+	public A() {
+		System.out.println("Inside A Class Default constructor");
+	}
+public A(int n) {
+		System.out.println("Inside A class Parametrized Constructor");
+	}
+	
+}
+class B extends A{
+	public B() {
+		System.out.println("Inside B Class Default constructor");
+	}
+public B(int n) {
+		System.out.println("Inside B class Parametrized Constructor");
+	}
+}

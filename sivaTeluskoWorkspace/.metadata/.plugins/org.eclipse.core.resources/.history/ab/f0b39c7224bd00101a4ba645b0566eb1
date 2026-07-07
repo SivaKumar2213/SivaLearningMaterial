@@ -1,0 +1,26 @@
+package OOPS;
+//I am using the classes in the same file but we can use in a different file
+//For Inheritance we does not even require a java file , the class file is enough which generate after compile
+//It allows a class (child/subclass) to acquire properties and behaviors (fields and methods) from 
+//another class (parent/superclass) is known as inheritance.
+
+//Inheritance means reusing code of an existing class in a new class.
+       //1)The existing class is called the parent (or superclass).
+       //2)The new class that inherits it is called the child (or subclass).
+
+public class inheritance {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+class Calc{
+	int sum;
+	public int add(int n1,int n2) {
+		return n1+n2;
+	}
+	public int sub(int n1,int n2) {
+		return n1+n2;
+	}
+}

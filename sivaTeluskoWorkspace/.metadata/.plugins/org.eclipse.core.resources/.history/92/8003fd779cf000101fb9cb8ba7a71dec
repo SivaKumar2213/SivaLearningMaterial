@@ -1,0 +1,111 @@
+
+
+import jakarta.servlet.ServletException;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+//HttpServlet is a class that we extend to write servlet logic, 
+//while HttpServletRequest is an interface that represents the client’s HTTP request 
+//and is created by the servlet container for each request.
+
+
+//We are using the GET method in the form action.
+//When the GET method is used, form values are appended to the URL.
+//As a result, sensitive data such as username and password
+//will be visible in the browser URL, which is not secure.
+//
+//If the method attribute is not mentioned in the form tag,
+//the browser uses GET as the default HTTP method.
+//
+//The browser does not directly call doGet() or doPost().
+//Instead, the servlet container first calls the service() method.
+//Inside service(), the HTTP method type (GET/POST) is checked,
+//and based on that, doGet() or doPost() is invoked internally.
+//
+//The internal logic of the service() method is already implemented
+//in the HttpServlet class provided by the Jakarta Servlet API.
+//
+//When multiple requests arrive,
+//the servlet container (web server) creates only ONE servlet object
+//and handles multiple requests by creating multiple threads.
+//Each thread calls the service() method on the same servlet object.
+
+@WebServlet("/getServlet")
+public class getServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name=request.getParameter("uname");
+		String pass=request.getParameter("upass");
+		response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        if ("Siva".equalsIgnoreCase(name) && "Password".equals(pass)) {
+            out.println("<h2>Login Successful with Get Method</h2>");
+        } else {
+            out.println("<h2>Invalid Username or Password</h2>");
+        }
+	}
+	
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name=request.getParameter("uname");
+		String pass=request.getParameter("upass");
+		response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        if ("Siva".equalsIgnoreCase(name) && "Password".equals(pass)) {
+            out.println("<h2>Login Successful with Post Method</h2>");
+        } else {
+            out.println("<h2>Invalid Username or Password</h2>");
+        }
+	}
+        @Override
+        protected void service(HttpServletRequest req, HttpServletResponse resp)
+                throws ServletException, IOException {
+
+            // Step 1: Get HTTP method type
+            String method = req.getMethod();
+            System.out.println("Method Name used : "+method);
+
+            // Step 2: Decide which method to call
+            if ("GET".equals(method)) {
+                doGet(req, resp);
+
+            } else if ("POST".equals(method)) {
+                doPost(req, resp);
+
+            } else if ("PUT".equals(method)) {
+                doPut(req, resp);
+
+            } else if ("DELETE".equals(method)) {
+                doDelete(req, resp);
+
+            } else if ("HEAD".equals(method)) {
+                doHead(req, resp);
+
+            } else if ("OPTIONS".equals(method)) {
+                doOptions(req, resp);
+
+            } else if ("TRACE".equals(method)) {
+                doTrace(req, resp);
+
+            } else {
+                // Step 3: Unsupported HTTP method
+                resp.sendError(
+                    HttpServletResponse.SC_METHOD_NOT_ALLOWED,
+                    "HTTP method not supported"
+                );
+            }
+        
+	
+	}
+
+}

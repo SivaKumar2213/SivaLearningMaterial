@@ -1,0 +1,23 @@
+package Com.BasicsHibernate.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
+
+public class CustomerDetBidirectional {
+	@Id
+	@GeneratedValue(generator = "custId",strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "custId",sequenceName = "MyOwn_Customer_seq_id",initialValue = 10,allocationSize = 1)
+	private Integer CustomerId;
+	private String customerName;
+	private Integer customerAge;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<OrderDetBidirectional> orderDetBiArrayList=new ArrayList<>();
+}

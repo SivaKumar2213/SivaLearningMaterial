@@ -1,0 +1,14 @@
+package Com.BasicsHibernate.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class EmployeeTable {
+@Id
+private Integer EmpId;
+private String EmpName;
+private Integer EmpAge;
+private String EmpSalary;
+
+}

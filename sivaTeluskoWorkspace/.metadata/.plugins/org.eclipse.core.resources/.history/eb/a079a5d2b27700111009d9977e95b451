@@ -1,0 +1,35 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.StudentTable;
+
+//Advanced of Launch Application Class java file
+public class PersistLaunchApplicationClass {
+
+	public static void main(String[] args) {
+        Configuration config=null;
+        SessionFactory sessionFactory=null;
+        Session session=null;
+        try {
+        	config=new Configuration();
+      //If we dont use Mapping in hibernate.config.xml means we should use the below line
+        session= new (config.addAnnotatedClass(StudentTable.class).configure().buildSessionFactory().openSession());
+        	
+        	config.buildSessionFactory().openSession().beginTransaction();
+        }
+        catch(HibernateException e) {
+        	e.printStackTrace();
+        }
+        catch(Exception e1) {
+        e1.printStackTrace();
+        }
+        finally {
+        	
+        }
+	}
+
+}

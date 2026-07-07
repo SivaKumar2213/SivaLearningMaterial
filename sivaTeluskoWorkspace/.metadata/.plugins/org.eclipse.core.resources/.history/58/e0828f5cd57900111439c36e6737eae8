@@ -1,0 +1,106 @@
+package Com.basicsHibernateConnections;
+
+import java.util.Properties;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.PaymentTableUniDirection;
+import Com.BasicsHibernate.model.PaymentTables;
+import Com.BasicsHibernate.model.ProductTableUniDirection;
+import Com.BasicsHibernate.model.ProductTables;
+
+public class HibernateOneToOneMapping {
+
+	public static void main(String[] args) {
+               Configuration config=null;
+               Session session=null;
+               Transaction transaction=null;
+               boolean flag=false;
+               try {
+            	   config=new Configuration();
+            	   config.setProperties(new Properties()
+            			   {
+            		   {
+            			   load(HibernateOneToOneMapping.class.getClassLoader().getResourceAsStream("hibernate1.properties"));
+            		   }
+            		   
+            			   });
+            	   config.addAnnotatedClass(PaymentTables.class);
+            	   config.addAnnotatedClass(ProductTables.class);
+            	   PaymentTables pt=new PaymentTables();
+            	   PaymentTables pt1=new PaymentTables();
+            	   ProductTables pdt=new ProductTables();
+            	   ProductTables pdt1=new ProductTables();
+            	   session=config.buildSessionFactory().openSession();
+            	   transaction=session.beginTransaction();
+            	   //Bidirection
+					
+					  pt.setPayerName("Siva Kumar"); 
+					  pt.setPaymentAmount("1500");
+					  pt.setPaymentMode("Cash"); 
+					  pdt.setProductName("Shirt");
+					  pdt.setProductAmount(pt.getPaymentAmount());
+					  pdt.setPurchaserName(pt.getPayerName()); 
+					  pdt.setPaymentTable(pt);//Owning Side
+					  pt.setProductTable(pdt);//Inverse Side
+					  
+					  pt1.setPayerName("Bala"); 
+					  pt1.setPaymentAmount("15000");
+					  pt1.setPaymentMode("GPAY"); 
+					  pdt1.setProductName("Mobile");
+					  pdt1.setProductAmount(pt1.getPaymentAmount());
+					  pdt1.setPurchaserName(pt1.getPayerName()); 
+					  pt1.setProductTable(pdt1);//Owning Side
+					  pdt1.setPaymentTable(pt1);//Inverse Side
+					  //Bidirection
+            	  
+            	   //UniDirection
+				ProductTableUniDirection uipdt=new ProductTableUniDirection();
+				ProductTableUniDirection uipdt1=new ProductTableUniDirection();
+				PaymentTableUniDirection uipt=new PaymentTableUniDirection();
+				PaymentTableUniDirection uipt1=new PaymentTableUniDirection();
+            	   uipdt.setProductName("Mobile Cover");
+            	   uipdt.setProductAmount("250");
+            	   uipdt.setPurchaserName("Bala");
+            	   uipt.setPayerName(uipdt.getPurchaserName());
+            	   uipt.setPaymentAmount(uipdt.getProductAmount());
+            	   uipt.setPaymentMode("GPAY");
+            	   uipdt.setPaymentTable(uipt);
+            	   
+            	   uipdt1.setProductName("Pant");
+            	   uipdt1.setProductAmount("1200");
+            	   uipdt1.setPurchaserName("Siva Kumar");
+            	   uipt1.setPayerName(uipdt1.getPurchaserName());
+            	   uipt1.setPaymentAmount(uipdt1.getProductAmount());
+            	   uipt1.setPaymentMode("Cash");
+            	   uipdt1.setPaymentTable(uipt1);
+            	   //UniDirection
+            	   
+            	     session.persist(pt);
+            	     session.persist(pt1);
+            	     session.persist(uipdt);
+            	     session.persist(uipdt1);
+            	   flag=true;
+            	   
+
+               }
+               catch(HibernateException e) {
+            	   e.printStackTrace();
+               }
+               catch(Exception e1) {
+            	   e1.printStackTrace();
+               }
+               finally {
+            	   if(flag) {
+            		   transaction.commit();
+            	   }else {
+            		   transaction.rollback();
+            	   }
+            	   session.close();
+               }
+	}
+
+}

@@ -1,0 +1,39 @@
+package Com.BasicsHibernate.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class EmployeeTable {
+@Id
+private Integer EmpId;
+private String EmpName;
+private Integer EmpAge;
+private String EmpSalary;
+private String EmpCity;
+public Integer getEmpId() {
+	return EmpId;
+}
+public void setEmpId(Integer empId) {
+	EmpId = empId;
+}
+public String getEmpName() {
+	return EmpName;
+}
+public void setEmpName(String empName) {
+	EmpName = empName;
+}
+public Integer getEmpAge() {
+	return EmpAge;
+}
+public void setEmpAge(Integer empAge) {
+	EmpAge = empAge;
+}
+public String getEmpSalary() {
+	return EmpSalary;
+}
+public void setEmpSalary(String empSalary) {
+	EmpSalary = empSalary;
+}
+
+}

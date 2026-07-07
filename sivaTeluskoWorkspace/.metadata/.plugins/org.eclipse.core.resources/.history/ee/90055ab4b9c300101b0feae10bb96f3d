@@ -1,0 +1,9 @@
+package Interface;
+
+public class abstractAndAnonymousInnerClass {
+
+	public static void main(String[] args) {
+
+	}
+
+}

@@ -1,0 +1,27 @@
+package InputAndOutput;
+//BufferedWriter is more efficient and faster compared to FileWriter
+//because it uses an internal buffer to reduce the number of I/O operations.
+//
+//FileWriter writes data directly to the file system for every write operation,
+//which causes more frequent disk access.
+//
+//BufferedWriter stores data in memory first and writes to the disk in larger chunks,
+//improving performance.
+//
+//We typically wrap a FileWriter inside a BufferedWriter to get both:
+//- FileWriter → writes characters to a file
+//- BufferedWriter → adds buffering to increase speed
+public class BufferedWriterWithFileWriter {
+
+	public static void main(String[] args) {
+		String path="D:\\SivaLearn\\File\\InputOutput\\bufferWriterFirstFile.txt";
+try {
+	
+}catch(Exception e) {
+	
+}finally {
+	
+}
+	}
+
+}

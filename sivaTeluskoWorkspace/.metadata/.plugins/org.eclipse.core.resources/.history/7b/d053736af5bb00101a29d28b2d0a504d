@@ -1,0 +1,22 @@
+package OOPS;
+//Normally String is a Class in Java
+public class string {
+
+	public static void main(String[] args) {
+String str=new String("siva");
+String str1="Kumar";
+System.out.println(str+str1);
+System.out.println(str.concat(" Kumar"));
+System.out.println(str1.charAt(3));
+System.out.println(str.codePointBefore(4));
+System.out.println(str1.codePointCount(0, 5));
+String username = "John😊";
+int len=username.length();
+System.out.println("UserName Length:" +len);
+System.out.println("UserName Length by new method :"+username.codePointCount(0, username.length()));
+if (username.codePointCount(0, username.length()) > 10) {
+    System.out.println("Too long!");
+}
+	}
+
+}

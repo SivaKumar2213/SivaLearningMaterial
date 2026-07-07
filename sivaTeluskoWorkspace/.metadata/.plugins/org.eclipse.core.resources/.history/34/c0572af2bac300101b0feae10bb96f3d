@@ -1,0 +1,53 @@
+package Interface;
+
+public class abstractAndAnonymousInnerClass {
+
+	public static void main(String[] args) {
+Car1 car1=new Car1() {
+
+	public void show() {
+		System.out.println("In New Show");
+	}
+
+	public void config() {
+		System.out.println("In New Config");
+	}
+	
+};
+	car1.show();
+	car1.config();
+	
+	UpdatedCar1 up=new UpdatedCar1() {
+
+		public void playMusic() {
+			System.out.println("In Update Car PlayMusic");
+		}
+
+		@Override
+		public void show() {
+			System.out.println("In Update Car show");
+			
+		}
+
+		@Override
+		public void config() {
+			System.out.println("In Update Car Config");			
+		}
+		
+	};
+	up.playMusic();
+	}
+
+}
+abstract class Car1{
+	public abstract void show();
+	public abstract void config();
+	
+}
+abstract class UpdatedCar1 extends Car1{
+	
+	public abstract void playMusic();
+	
+}
+//For implementing the show and config method we can go ahead by creating a another class and extends the Car1 class
+//and create an object for the new concrete class and implements instead of that we can use AnonymousInnerClass

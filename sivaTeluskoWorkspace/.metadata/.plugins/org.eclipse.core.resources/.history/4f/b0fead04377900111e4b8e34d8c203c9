@@ -1,0 +1,76 @@
+package Com.basicsHibernateConnections;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Properties;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.StudentTable;
+
+public class HibernateConnectionsUsingPropertiesFile {
+
+	public static void main(String[] args) {
+Configuration config=null;
+Session session=null;
+Transaction transaction=null;
+boolean flag=false;
+try {
+	config=new Configuration();
+	config.addProperties(new Properties() {{//config is a Hibernate Configuration object.addProperties() tells Hibernate:
+                                            //"Use these properties (database URL, username, password, dialect, etc.) while creating the SessionFactory."
+		                                    //new Properties() {{ Properties is a Java class that stores data as key-value pairs.
+		                                   //Example:hibernate.connection.url=jdbc:mysql://localhost:3306/test
+		                                   //hibernate.connection.username=root	Internally it becomes
+                                          //Key	                                  Value
+			                             // hibernate.connection.url	          jdbc:mysql://localhost:3306/test
+		
+		
+		
+		
+		
+		
+		//load method will read the content completely and append the value to the corresponding key
+		                                    //HibernateConnectionsUsingPropertiesFile.class object .getClassLoader will search inside 
+		                                    //src/main/resources folder completely
+		                                    //getResourceAsStream will check for the file hibernate1.properties present or not
+		load(HibernateConnectionsUsingPropertiesFile.class.getClassLoader()
+				.getResourceAsStream("hibernate1.properties")
+				);
+	}});
+	config.addAnnotatedClass(StudentTable.class);
+	session=config.buildSessionFactory().openSession();
+	transaction=session.beginTransaction();
+	StudentTable st=new StudentTable();
+	st.setId(11);
+	st.setAge(22);
+	st.setCity("Erode");
+	st.setName("Gowtham");
+	SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+	Date dob = null;
+	dob = sdf.parse("22-09-2004");
+	st.setDateOfBirth(dob);
+	session.persist(st);
+	flag=true;
+	
+}
+catch(HibernateException e) {
+	e.printStackTrace();
+}
+catch(Exception e1) {
+	e1.printStackTrace();
+}
+finally {
+	if(flag) {
+		transaction.commit();
+	}else {
+		transaction.rollback();
+	}
+	session.close();
+}
+	}
+
+}

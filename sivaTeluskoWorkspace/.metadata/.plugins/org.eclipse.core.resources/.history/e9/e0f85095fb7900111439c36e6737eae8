@@ -1,0 +1,30 @@
+package Com.basicsHibernateConnections;
+
+import java.util.Properties;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateManyToManyMapping {
+
+	public static void main(String[] args) {
+    Configuration config=null;
+    Session session=null;
+    Transaction transaction=null;
+    try {
+    config.setProperties(new Properties() {{
+    	load(HibernateManyToManyMapping.class.getClassLoader().getResourceAsStream("hibernate1.properties"));
+    }
+    	
+    });
+	}
+    catch(Exception e) {
+		e.printStackTrace();
+	}
+    finally {
+    	
+    }
+	}
+	
+}

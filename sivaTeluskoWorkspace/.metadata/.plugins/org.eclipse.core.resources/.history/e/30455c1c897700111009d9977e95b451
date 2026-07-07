@@ -1,0 +1,10 @@
+package Com.basicsHibernateConnections;
+
+public class LaunchApplicationClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

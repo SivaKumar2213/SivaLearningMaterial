@@ -1,0 +1,29 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateConnectionsUsingPropertiesFile {
+
+	public static void main(String[] args) {
+Configuration config=null;
+Session session=null;
+Transaction transaction=null;
+try {
+	config=new Configuration();
+	
+}
+catch(HibernateException e) {
+	e.printStackTrace();
+}
+catch(Exception e1) {
+	e1.printStackTrace();
+}
+finally {
+	
+}
+	}
+
+}

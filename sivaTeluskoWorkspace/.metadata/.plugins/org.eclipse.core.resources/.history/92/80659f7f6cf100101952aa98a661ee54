@@ -1,0 +1,66 @@
+//sendRedirect() creates a NEW HTTP request, so the old request (with attributes) is destroyed.
+//Internally this will happens
+//1)Browser sends request to FirstServlet
+//2)️FirstServlet sets request attribute:
+//3)request.setAttribute("name", "Siva");
+//4)FirstServlet calls:response.sendRedirect("secondServlet");
+//5)Tomcat sends 302 response to browser
+//6)Browser creates a NEW request to secondServlet
+//7)Old request object is discarded :Attribute is LOST
+//Code Proof
+  //FirstServlet : request.setAttribute("name", "Siva");response.sendRedirect("secondServlet");
+  //SecondServlet: String name = (String) request.getAttribute("name");System.out.println(name); // null ❌
+//Because: This request is NOT the same object
+
+//WHY IT WORKS WITH forward() BUT NOT redirect() -->Forward was explained in ServletRequestDispatcher Project 
+//forward()	                                   sendRedirect()
+//Same request object	                           New request object
+//Server-side	                                   Client-side
+//Attributes preserved	                       Attributes lost
+//Faster	                                        Slower
+
+//Think of request as a parcel
+//forward() → hand the same parcel to another person
+//sendRedirect() → throw the parcel away and ask the sender to send a new one
+
+//because all code is written on the server, yet we say: sendRedirect() → client-side and forward() / include() → server-side
+//Key Concept is : Client-side” or “Server-side” refers to WHO MAKES THE NEXT REQUEST, not WHERE THE CODE IS WRITTEN.
+//Yes — all Java servlet code runs on the server.
+//But the next request is triggered by browser or server.
+
+//sendRedirect() → CLIENT-SIDE (WHY?) : What your server code does:response.sendRedirect("secondServlet");That line does ONLY ONE THING:
+//It sends this response to the browser:HTTP/1.1 302 Found Location: secondServlet
+//That’s it. Server work is done.
+
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+
+@WebServlet("/getRedirectServlet")
+public class getRedirectServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public getRedirectServlet() {
+       System.out.println("Servlet Object Created");
+    }
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   String name=request.getParameter("uname");
+	   String pass=request.getParameter("upass");
+	   if("Siva".equalsIgnoreCase(name) && "Password".equalsIgnoreCase(pass)) {
+		   response.sendRedirect("/ServletResponseRedirect/success.jsp");
+	   }else {
+		   response.sendRedirect("/ServletResponseRedirect/failure.html");
+
+	   }
+	
+	}
+
+}

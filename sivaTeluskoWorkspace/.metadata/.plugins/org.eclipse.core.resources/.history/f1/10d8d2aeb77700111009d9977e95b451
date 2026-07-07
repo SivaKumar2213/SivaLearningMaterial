@@ -1,0 +1,40 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.StudentTable;
+
+public class UpdateOrDeleteLaunchApplicationClass {
+
+	public static void main(String[] args) {
+           Configuration config=null;
+           SessionFactory sessionFactory=null;
+           Session session=null;
+           Transaction transaction=null;
+           boolean transUpdateFlag=false;
+           boolean transDeleteFlga=false;
+           try {
+        	   config=new Configuration();
+        	   config.addAnnotatedClass(StudentTable.class);
+        	   config.configure();
+        	   session=config.buildSessionFactory().openSession();
+        	   
+           }
+           catch(HibernateException e) {
+        	   e.printStackTrace();
+           }
+           catch(Exception e1) {
+        	   e1.printStackTrace();
+           }
+           finally {
+        	   
+           }
+        		   
+		
+	}
+
+}

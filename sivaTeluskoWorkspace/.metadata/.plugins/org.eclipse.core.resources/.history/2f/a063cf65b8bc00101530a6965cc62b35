@@ -1,0 +1,54 @@
+package OOPS;
+//There is confusion between local variable and instance Variable because both name are same
+//So it is assigning the default value because it always gives importance local variable
+//So to resolve this issue , we need to pass the currfent object reference also like Student 3
+public class thisKeyword {
+
+	public static void main(String[] args) {
+Student2 s2=new Student2();
+s2.setAge(11);
+s2.setName("Mani Kumar");
+System.out.println("The Student Name is : "+s2.getName()+ " and the age is : "+s2.getAge());
+System.out.println("--------------------------------------------------------------------------------");
+Student3 s3=new Student3();
+s3.setAge(11,s3);
+s3.setName("Mani Kumar",s3);
+System.out.println("The Student Name is : "+s3.getName()+ " and the age is : "+s3.getAge());
+	}
+
+}
+class Student2{
+	private int age;
+	private String name;
+	public int getAge() {
+		return age;
+	}
+	public String getName() {
+		return name;
+	}
+	
+	public void setAge(int age) {
+		age=age;
+	}
+	public void setName(String name) {
+		name=name;
+	}
+}
+
+class Student3{
+	private int age;
+	private String name;
+	public int getAge() {
+		return age;
+	}
+	public String getName() {
+		return name;
+	}
+	
+	public void setAge(int age,Student3 obj) {
+		obj.age=age;
+	}
+	public void setName(String name,Student3 obj) {
+		obj.name=name;
+	}
+}

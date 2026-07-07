@@ -1,0 +1,35 @@
+package OOPS;
+//Final can be used with variable,methods,class
+//Variable - if we use once final we cannot assign value further
+//Class - if class is declared as final it cannot be extend by another class stops inheritance concept
+//Methods- if method is final , we cannot override the method 
+public class finalKeyword {
+
+	public static void main(String[] args) {
+int num=10;
+num=18;
+final int age=28;
+//age=26;//we will get compile time error
+	}
+
+}
+class HumanType{
+	public void show() {
+		System.out.println("by Siva Parent class");
+	}
+	public void getPrpoerties() {
+		System.out.println("by Siva Parent properties");
+	}
+}
+final class animal{
+	
+}
+class man extends HumanType{
+	
+}
+class female extends HumanType{
+	
+}
+/*class others extends animal{
+	
+}*///we will get compile time error

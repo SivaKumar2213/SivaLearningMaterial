@@ -1,0 +1,23 @@
+package OOPS;
+//one thing in many forms”-->PolyMorphism
+//Polymorphism allows one interface (like a method name or object reference)
+//to represent different underlying forms (implementations).
+//Two Types of Polymorphism
+    //1)Compile-time Polymorphism or Static Polymorphism At compile time example Method Overloading
+   //2)Runtime Polymorphism or Dynamic Polymorphism At runtime example Method Overriding
+public class dynamicTimeDispatchorRunTimePolymorphism {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+class polyParent{
+	
+}
+class polyChild1{
+	
+}
+class polyChild2{
+	
+}

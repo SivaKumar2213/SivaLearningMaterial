@@ -1,0 +1,18 @@
+package Com.BasicsHibernate.model;
+
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="STUDENTDETAILSTABLE")
+public class StudentTable {
+private Integer ID;
+private String name;
+private String city;
+private Date dateOfBirth;
+private Integer age;
+
+
+}

@@ -1,0 +1,9 @@
+package OOPS;
+//String is immutable it cannot be changed ,It will create a new object if we try to modify the old one
+public class stringImmutable {
+
+	public static void main(String[] args) {
+
+	}
+
+}

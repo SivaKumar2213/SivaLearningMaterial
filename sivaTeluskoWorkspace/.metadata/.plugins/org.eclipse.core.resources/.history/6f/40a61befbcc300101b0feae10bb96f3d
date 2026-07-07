@@ -1,0 +1,24 @@
+package Interface;
+//In an interface:
+//1️ All methods are public and abstract by default (until Java 7)
+//2️ All variables are public, static, and final by default
+//3️ Interface variables must be initialized (constants)
+//4️ A class must implement the interface methods (variables cannot be overridden)
+//5️ Interfaces do not have object memory for variables (they store values as constants in Method Area)
+//6️ Interfaces can have default and static methods (from Java 8)
+//7️ Interfaces can have private methods (from Java 9)
+interface ab{
+	//int age;//we will get compile time error
+	void show();
+	void config();
+}
+class abc implements ab{
+	
+}
+public class interfaceExample {
+
+	public static void main(String[] args) {
+
+	}
+
+}

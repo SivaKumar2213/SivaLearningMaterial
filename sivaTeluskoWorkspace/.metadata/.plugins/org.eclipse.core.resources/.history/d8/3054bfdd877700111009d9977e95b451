@@ -1,0 +1,9 @@
+package Com.BasicsHibernate.model;
+
+import jakarta.persistence.Entity;
+
+@Entity
+@Table(name="STUDENTDETAILSTABLE")
+public class StudentTable {
+
+}

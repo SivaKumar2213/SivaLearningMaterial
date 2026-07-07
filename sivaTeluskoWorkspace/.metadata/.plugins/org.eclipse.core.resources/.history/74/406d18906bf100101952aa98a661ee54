@@ -1,0 +1,41 @@
+//sendRedirect() creates a NEW HTTP request, so the old request (with attributes) is destroyed.
+//Internally this will happens
+//1)Browser sends request to FirstServlet
+//2)️FirstServlet sets request attribute:
+//3)request.setAttribute("name", "Siva");
+//4)FirstServlet calls:response.sendRedirect("secondServlet");
+//5)Tomcat sends 302 response to browser
+//6)Browser creates a NEW request to secondServlet
+//7)Old request object is discarded :Attribute is LOST
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+
+@WebServlet("/getRedirectServlet")
+public class getRedirectServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public getRedirectServlet() {
+       System.out.println("Servlet Object Created");
+    }
+
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   String name=request.getParameter("uname");
+	   String pass=request.getParameter("upass");
+	   if("Siva".equalsIgnoreCase(name) && "Password".equalsIgnoreCase(pass)) {
+		   response.sendRedirect("/ServletResponseRedirect/success.jsp");
+	   }else {
+		   response.sendRedirect("/ServletResponseRedirect/failure.html");
+
+	   }
+	
+	}
+
+}

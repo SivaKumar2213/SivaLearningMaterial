@@ -1,0 +1,5 @@
+package Com.BasicsHibernate.model;
+
+public class CustomerDetBidirectional {
+
+}

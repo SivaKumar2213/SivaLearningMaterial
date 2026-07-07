@@ -1,0 +1,26 @@
+package conditional;
+
+public class forLoop {
+
+	public static void main(String[] args) {
+for(int i=0;i<4;i++) {
+	System.out.println("hi :" +i);
+}
+System.out.println("-----------------------------------------------------");
+int num=5;
+int j=1;
+for(;j<=5;) {
+	System.out.println("Day : "+j);
+	for(int c=1;c<9;c++) {
+		//System.out.println("  "+c+8+"-"+c+9);
+		System.out.println("  "+(c+8)+"-"+(c+9));//we want to put this in a bracket or 
+		                                         //else plus will take as a string concat
+		                                         //for checking uncomment the before line
+	}
+	j++;
+}
+
+
+	}
+
+}

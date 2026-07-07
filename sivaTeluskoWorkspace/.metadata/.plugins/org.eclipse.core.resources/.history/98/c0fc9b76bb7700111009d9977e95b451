@@ -1,0 +1,9 @@
+package Com.BasicsHibernate.model;
+
+public class EmployeeTable {
+private Integer EmpId;
+private String EmpName;
+private Integer EmpAge;
+private String EmpSalary;
+
+}

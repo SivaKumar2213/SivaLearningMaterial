@@ -1,0 +1,15 @@
+package Interface;
+//In interface by default all the methods present inside are public and abstract
+//interface by default all the variables are final and static
+//because interface does not have its own memory in heap so only
+//and only interface methods we can implement in the class not a variable
+interface ab{
+	
+}
+public class interfaceExample {
+
+	public static void main(String[] args) {
+
+	}
+
+}

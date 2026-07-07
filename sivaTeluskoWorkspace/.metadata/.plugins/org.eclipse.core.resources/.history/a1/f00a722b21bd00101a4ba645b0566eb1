@@ -1,0 +1,15 @@
+package OOPS;
+//A object which will not create in Stack ,that is it is not assigned to any reference,so
+//that type of object is called anonymousObject
+public class anonymousObject {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+class anonymousObjectCheck{
+	public anonymousObjectCheck() {
+		
+	}
+}

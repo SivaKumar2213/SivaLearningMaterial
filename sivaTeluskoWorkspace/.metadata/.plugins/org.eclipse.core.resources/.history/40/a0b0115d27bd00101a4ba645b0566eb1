@@ -1,0 +1,13 @@
+package OOPS;
+//In Java, multilevel inheritance means a chain of inheritance — 
+//where a class is derived from another class, which is itself derived from another class.
+
+//In other words, a child class becomes the parent for another child class.
+public class multiLevelInheritance {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,49 @@
+package InputAndOutput;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+//BufferedWriter is more efficient and faster compared to FileWriter
+//because it uses an internal buffer to reduce the number of I/O operations.
+//
+//FileWriter writes data directly to the file system for every write operation,
+//which causes more frequent disk access.
+//
+//BufferedWriter stores data in memory first and writes to the disk in larger chunks,
+//improving performance.
+//
+//We typically wrap a FileWriter inside a BufferedWriter to get both:
+//- FileWriter → writes characters to a file
+//- BufferedWriter → adds buffering to increase speed
+public class BufferedWriterWithFileWriter {
+
+	public static void main(String[] args) throws IOException {
+		String path="D:\\SivaLearn\\File\\InputOutput\\bufferWriterFirstFile.txt";
+		FileWriter writer=null;
+		BufferedWriter bfWriter=null;
+try {
+  File f1=new File(path);
+  writer=new FileWriter(f1,true);//if we pass true here it will not replace 
+                                 //the existing content in the file
+
+  bfWriter=new BufferedWriter(writer);
+  bfWriter.newLine();
+  bfWriter.write("The first Buffered Writer");
+  bfWriter.newLine();
+  char ch[]= {'f','i','l','e'};
+  bfWriter.write("by");
+  bfWriter.newLine();
+  bfWriter.write(97);
+  bfWriter.newLine();
+  bfWriter.write("Java program");
+  bfWriter.newLine();
+}catch(Exception e) {
+	
+}finally {
+	bfWriter.close();
+}
+	}
+
+}

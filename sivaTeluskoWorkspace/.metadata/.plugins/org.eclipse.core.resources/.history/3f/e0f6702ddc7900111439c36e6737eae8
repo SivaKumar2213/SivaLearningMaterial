@@ -1,0 +1,12 @@
+package Com.BasicsHibernate.model;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class CustomerDetails {
+private Integer CustomerId;
+private String customerName;
+private Integer customerAge;
+
+
+}

@@ -1,0 +1,12 @@
+package OOPS;
+//Normally String is a Class in Java
+public class string {
+
+	public static void main(String[] args) {
+String str=new String("siva");
+String str1="Kumar";
+System.out.println(str+str1);
+System.out.println(str.concat(" Kumar"));
+	}
+
+}

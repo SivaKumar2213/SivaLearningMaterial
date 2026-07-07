@@ -1,0 +1,17 @@
+package Interface;
+//It is a class without a name, defined and instantiated at the same time.
+//Used mainly for method overriding or interface implementation without creating a separate class file.
+//When we compile the file it will create a class file as $ with a random number like starts with 1 $!.class
+public class anonymousInnerClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+class A1{
+	public void show(){
+		system.out.println("in A Show");
+	}
+}

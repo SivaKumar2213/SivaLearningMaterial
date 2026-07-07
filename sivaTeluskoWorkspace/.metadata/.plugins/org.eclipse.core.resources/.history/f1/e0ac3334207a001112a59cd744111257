@@ -1,0 +1,63 @@
+package Com.BasicsHibernate.model;
+
+import java.util.Arrays;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+
+@Entity
+public class LaptopDetails {
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer lapTopId;
+private String laptopName;
+private String price;
+@Lob//Used to store largeObject like image in bytes and text files in character
+@Column(length = 1000000000)
+private byte[] image;
+@Lob
+private char[] laptopDetailsText;
+public Integer getLapTopId() {
+	return lapTopId;
+}
+public void setLapTopId(Integer lapTopId) {
+	this.lapTopId = lapTopId;
+}
+public String getLaptopName() {
+	return laptopName;
+}
+public void setLaptopName(String laptopName) {
+	this.laptopName = laptopName;
+}
+public String getPrice() {
+	return price;
+}
+public void setPrice(String price) {
+	this.price = price;
+}
+public byte[] getImage() {
+	return image;
+}
+public void setImage(byte[] image) {
+	this.image = image;
+}
+public char[] getLaptopDetailsText() {
+	return laptopDetailsText;
+}
+public void setLaptopDetailsText(char[] laptopDetailsText) {
+	this.laptopDetailsText = laptopDetailsText;
+}
+@Override
+public String toString() {
+	return "LaptopDetails [lapTopId=" + lapTopId + ", laptopName=" + laptopName + ", price=" + price + ", image="
+			+ Arrays.toString(image) + ", laptopDetailsText=" + Arrays.toString(laptopDetailsText) + "]";
+}
+
+
+
+
+}

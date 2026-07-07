@@ -1,0 +1,40 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class HibernateUsingJavaCodeConnections {
+
+	public static void main(String[] args) {
+Configuration config=null;
+Session session=null;
+Transaction transaction=null;
+try {
+	config=new Configuration();//After this line in the previous program and all we used config.Configure()
+	                           //which will map the properties value from hibernate.cfg.xml
+	
+	config.setProperty(null, null);
+	config.setProperty(null, null);
+	config.setProperty(null, null);
+	config.setProperty(null, null);	
+	config.setProperty(null, null);
+	config.setProperty(null, null);
+	config.setProperty(null, null);
+	config.setProperty(null, null);
+	
+	
+}
+catch(HibernateException e) {
+	e.printStackTrace();
+}
+catch(Exception e1) {
+	e1.printStackTrace();
+}
+finally {
+	
+}
+	}
+
+}

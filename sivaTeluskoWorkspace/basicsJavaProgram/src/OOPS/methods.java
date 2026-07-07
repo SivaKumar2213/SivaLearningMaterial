@@ -1,0 +1,46 @@
+package OOPS;
+
+public class methods {
+
+	public static void main(String[] args) {
+		Car car=new Car();
+		int model=car.getYearOfManufactor(2016);
+		String colur=car.colour(2);
+		System.out.println("The Model Of the Car is :" +model);
+		System.out.println("The Colour Of the Car is :" +colur);
+
+	}
+}
+class Car{
+	String colour;
+	public String colour(int num) {
+		
+		switch(num){
+			case 1:
+				colour="Red";
+				break;
+			case 2:
+				colour="Blue";
+				break;
+			case 3:
+				colour="White";
+				break;
+			case 4:
+				colour="Orange";
+				break;
+				default :
+					colour="Black";
+		}
+		return colour;
+	}
+	public int getYearOfManufactor(int model) {
+		if(model > 0) 
+			return model;
+		return model;
+		
+		
+	}
+	
+}
+
+

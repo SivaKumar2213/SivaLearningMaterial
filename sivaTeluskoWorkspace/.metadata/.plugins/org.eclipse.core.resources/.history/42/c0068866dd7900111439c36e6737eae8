@@ -1,0 +1,50 @@
+package Com.basicsHibernateConnections;
+
+import java.util.Properties;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.CustomerDetails;
+import Com.BasicsHibernate.model.OrderDetails;
+import Com.BasicsHibernate.model.PaymentTableUniDirection;
+import Com.BasicsHibernate.model.PaymentTables;
+import Com.BasicsHibernate.model.ProductTableUniDirection;
+import Com.BasicsHibernate.model.ProductTables;
+
+public class HibernateOnetoManyMapping {
+
+	public static void main(String[] args) {
+		Configuration config=null;
+        Session session=null;
+        Transaction transaction=null;
+        boolean flag=false;
+        try {
+     	   config=new Configuration();
+     	   config.setProperties(new Properties()
+     			   {
+     		   {
+     			   load(HibernateOneToOneMapping.class.getClassLoader().getResourceAsStream("hibernate1.properties"));
+     		   }
+     		   
+     			   });
+     	   config.addAnnotatedClass(OrderDetails.class);
+     	   config.addAnnotatedClass(CustomerDetails.class);
+     	   session=config.buildSessionFactory().openSession();
+     	   transaction=session.beginTransaction();
+     	  CustomerDetails cd=new CustomerDetails();
+     	  OrderDetails od=new OrderDetails();
+     	  cd.
+     	 
+     	  
+	}
+        catch(Exception e) {
+        	e.printStackTrace();
+        }
+        finally {
+        	
+        }
+	}    
+
+}

@@ -1,0 +1,11 @@
+package Interface;
+//Class --> Class : extends
+//Class --> Interface : implements
+//interface --> Interface : extends
+public class moreOnInterface {
+
+	public static void main(String[] args) {
+
+	}
+
+}

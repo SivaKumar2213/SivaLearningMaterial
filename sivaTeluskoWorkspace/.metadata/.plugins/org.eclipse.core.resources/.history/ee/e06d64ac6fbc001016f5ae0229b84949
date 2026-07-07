@@ -1,0 +1,11 @@
+package OOPS;
+//Both are same only one difference is string buffer is thread safe and string builder is not thread safe
+//Both are mutable can be change it wont create a different object 
+public class StringBufferandBuilder {
+
+	public static void main(String[] args) {
+StringBuffer sb=new StringBuffer();
+System.out.println("The initial capacity of String Buffer is :"+sb.capacity());
+	}
+
+}

@@ -1,0 +1,23 @@
+package Interface;
+//It is a class without a name, defined and instantiated at the same time.
+//Used mainly for method overriding or interface implementation without creating a separate class file.
+//When we compile the file it will create a class file as anonymousInnerClass$ with a random number like starts with 1--> anonymousInnerClass$!.class
+public class anonymousInnerClass {
+
+	public static void main(String[] args) {
+A1 a=new A1() {
+	public void show(){
+		System.out.println("in New Show");
+	}
+};
+a.show();
+	}
+
+}
+class A1{
+	public void show(){
+		System.out.println("in A Show");
+	}
+}
+//just to override the A1 class method we will only once by another class so we will create a new class called 
+//B1 we will create a class and extends A1 class instead of doing that we are doing with anonymous Inner class

@@ -1,0 +1,17 @@
+package Com.BasicsHibernate.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+@Entity
+public class ProductTableUniDirection {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer productId;
+	private String productName;
+	private String productAmount;
+	private String purchaserName;
+	
+	
+}

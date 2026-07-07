@@ -1,0 +1,15 @@
+package OOPS;
+//String is immutable it cannot be changed ,It will create a new object if we try to modify the old one
+public class stringImmutable {
+
+	public static void main(String[] args) {
+String str="Siva";
+System.out.println("before changing or modify the string value the address");
+System.out.println(str.hashCode());	
+str=str + " Kumar";
+System.out.println("After changing or modify the string value the address");
+System.out.println(str.hashCode());	
+	
+	}
+
+}

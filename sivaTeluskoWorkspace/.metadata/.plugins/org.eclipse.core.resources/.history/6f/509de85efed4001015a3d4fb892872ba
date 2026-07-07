@@ -1,0 +1,48 @@
+package InputAndOutput;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
+//PrintWriter is a high-level writer used to write formatted text data to files.
+//It provides convenient methods like print(), println(), and printf()
+//which are similar to System.out.println(), making it very easy to use.
+//
+//While FileWriter and BufferedWriter can write characters,
+//PrintWriter adds user-friendly printing features and automatic flushing support.
+//
+//PrintWriter does NOT throw IOException for write operations;
+//instead, errors can be checked using checkError() method.
+//
+//We typically wrap PrintWriter on top of FileWriter or BufferedWriter
+//to get:
+//- FileWriter / BufferedWriter → low-level file writing
+//- PrintWriter → easy printing with print(), println(), printf()
+//if we use  print(), println(), printf(), the value what we entered will get stored in file
+public class writeWithPrintWriter {
+
+	public static void main(String[] args) {
+		String path="D:\\SivaLearn\\File\\InputOutput\\printWriterFirstFile.txt";
+		FileWriter writer=null;
+		PrintWriter pwriter=null;
+		try {
+			File file1=new File(path);
+			writer=new FileWriter(file1);
+			pwriter=new PrintWriter(writer);
+			
+			pwriter.write(65);//it will print as A
+			pwriter.write("\n");
+			pwriter.write("First program");
+			pwriter.println("Written by java program for the");
+			pwriter.println(1);//it will print the number 1 as it is because we are using println
+			pwriter.println("st Time");
+		}catch(Exception e) {
+			
+		}finally {
+			
+		}
+		
+
+	}
+
+}

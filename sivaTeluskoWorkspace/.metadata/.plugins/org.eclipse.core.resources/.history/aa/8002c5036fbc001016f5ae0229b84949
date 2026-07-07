@@ -1,0 +1,10 @@
+package OOPS;
+//Both are same only one difference is string buffer is thread safe and string builder is not thread safe
+public class StringBufferandBuilder {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

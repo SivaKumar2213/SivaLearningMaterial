@@ -1,0 +1,80 @@
+package Com.basicsHibernateConnections;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.LaptopDetails;
+
+public class HibernateLOBannotationLargeObject {
+
+	public static void main(String[] args) {
+		Configuration config=null;
+		Session session=null;
+		Transaction transaction=null;
+		FileInputStream fis=null;
+		File file=null;
+		FileReader reader=null;
+		byte image[]=null;
+		char txtFile[]=null;
+		boolean transFlag=false;
+		try {
+			config=new Configuration();
+			config.setProperties(new Properties() {
+				{
+					load(HibernateLOBannotationLargeObject.class.getClassLoader().getResourceAsStream("hibernate1.properties"));
+				}
+				
+			});
+			config.addAnnotatedClass(LaptopDetails.class);
+			session=config.buildSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			
+		  fis = new FileInputStream("C:\\\\Users\\\\DELL\\\\Pictures\\\\Screenshots\\\\LaptopImage.jpg");
+		 image=new byte[fis.available()];
+		 fis.read(image);
+		 
+		 file=new File("D:\\\\laptopDetailsText.txt.txt");
+		 txtFile=new char[((int)file.length())];
+		 reader=new FileReader(file);
+		 reader.read(txtFile);
+		 LaptopDetails lapDet=new LaptopDetails();
+		 lapDet.setLaptopName("Dell");
+		 lapDet.setPrice("1000000");
+		 lapDet.setImage(image);
+		 lapDet.setLaptopDetailsText(txtFile);
+		 session.persist(lapDet);
+		 transFlag=true;
+		 
+		 
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(transFlag) {
+				transaction.commit();
+			}else {
+				transaction.rollback();
+				
+			}
+			try {
+				fis.close();
+				reader.close();
+				session.close();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+
+	}
+
+}

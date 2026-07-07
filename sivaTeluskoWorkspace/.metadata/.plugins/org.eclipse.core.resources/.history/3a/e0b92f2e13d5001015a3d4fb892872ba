@@ -1,0 +1,11 @@
+package InputAndOutput;
+//Deserialization is
+//These bytes can later be converted back into the same object, which is called Deserialization.
+public class deserialization {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

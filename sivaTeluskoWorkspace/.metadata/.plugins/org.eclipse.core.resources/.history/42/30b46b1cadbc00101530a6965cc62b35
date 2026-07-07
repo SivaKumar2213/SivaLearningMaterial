@@ -1,0 +1,13 @@
+package OOPS;
+
+public class staticBlock {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+class Mobile{
+	String name;
+	int price;
+}

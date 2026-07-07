@@ -1,0 +1,19 @@
+package Com.basicsHibernateConnections;
+//1)In Hibernate we can use three methods to fetch the data from Database
+//   1)get()-->Eager Loading
+//   2)load()-->Lazy Loading
+//   3)getReference()-->Lazy loading
+//2)Eager Loading --> on calling the get() method itself it will execute the query and returns the actual object 
+//                -->If the recorda are not found then it will return as null
+//3)Lazy Loading --> on calling the load() and getReference() method without hitting the database it will create an proxyobject first
+ //             -->Once you try to access the other fields in database then it will execute the query and return an acgual object
+ //             -->if records not found it will throw an exception
+//4)load and getRefernce() method has same behaviour but load is depricated method
+public class LazyandEagerLodaingforDataRetrival {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

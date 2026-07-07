@@ -1,0 +1,96 @@
+package Com.basicsHibernateConnections;
+
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.Courses;
+import Com.BasicsHibernate.model.Students;
+
+public class HibernateManyToManyMapping {
+
+	public static void main(String[] args) {
+    Configuration config=null;
+    Session session=null;
+    Transaction transaction=null;
+    boolean flag=false;
+    try {
+    	config=new Configuration();
+    config.setProperties(new Properties() {{
+    	load(HibernateManyToManyMapping.class.getClassLoader().getResourceAsStream("hibernate1.properties"));
+    }
+    	
+    });
+    config.addAnnotatedClass(Students.class);
+    config.addAnnotatedClass(Courses.class);
+    Courses c1=new Courses();
+    c1.setCourseName("Java");
+    c1.setCourseAmount("10000");
+    Courses c2=new Courses();
+    c2.setCourseName("Hibernate");
+    c2.setCourseAmount("5000");
+    Courses c3=new Courses();
+    c3.setCourseName("Spring Boot");
+    c3.setCourseAmount("10000");
+    Courses c4=new Courses();
+    c3.setCourseName("Microservice");
+    c3.setCourseAmount("20000");
+    
+    Courses c5=new Courses();
+    c3.setCourseName("Oracle");
+    c3.setCourseAmount("3000");
+    
+    
+    Set<Courses> set1=new HashSet<>();
+    Set<Courses> set2=new HashSet<>();
+    Set<Courses> set3=new HashSet<>();
+    
+    set1.add(c1);
+    set1.add(c2);
+    set1.add(c3);
+    
+    set2.add(c3);
+    set2.add(c2);
+    
+    set3.add(c1);
+    set3.add(c4);
+    set3.add(c5);
+    
+    Students s1=new Students();
+    s1.setStudName("Ramesh");
+    s1.setStudAge(29);
+    s1.setCouses(set1);
+    
+    Students s2=new Students();
+    s2.setStudName("Kumar");
+    s2.setStudAge(29);
+    s2.setCouses(set2);
+    
+    Students s3=new Students();
+    s3.setStudName("Balaganesh");
+    s3.setStudAge(29);
+    s3.setCouses(set3);
+    session=config.buildSessionFactory().openSession();
+    transaction=session.beginTransaction();
+    session.persist(s1);
+    session.persist(s2);
+    session.persist(s3);
+    flag=true;
+	}
+    catch(Exception e) {
+		e.printStackTrace();
+	}
+    finally {
+    	if(flag) {
+    		transaction.commit();
+    	}else {
+    		transaction.rollback();
+    	}
+    }
+	}
+	
+}

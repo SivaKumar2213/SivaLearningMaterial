@@ -1,0 +1,49 @@
+package Com.basicsHibernateConnections;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.EmployeeTable;
+import Com.BasicsHibernate.model.StudentTable;
+
+public class selectiveInsertwithTransientAnnotationLaunchAppClass {
+
+	public static void main(String[] args) {
+		Configuration config=null;
+        SessionFactory sessionFactory=null;
+        Session session=null;
+        Transaction transaction=null;
+        boolean transFlag=false;
+        try {
+        	config=new Configuration();
+      //If we dont use Mapping in hibernate.config.xml means we should use the below line
+        session= config.addAnnotatedClass(EmployeeTable.class).configure().buildSessionFactory().openSession();
+        transaction= session.beginTransaction();
+        EmployeeTable emp=new EmployeeTable();
+        emp.setEmpId(1);
+        emp.setEmpName("Kumar");
+        emp.setEmpCity("Bangalore");
+        emp.setEmpAge(29);
+        emp.setEmpSalary("100000");
+        session.persist(emp);
+        transFlag=true;
+        }
+        catch(HibernateException e) {
+        	e.printStackTrace();
+        }
+        catch(Exception e1) {
+        	e1.printStackTrace();
+        }
+        finally {
+        	if(transFlag) {
+        		transaction.commit();
+        	}else {
+        		transaction.rollback();
+        	}
+        }
+	}
+
+}

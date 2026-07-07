@@ -1,0 +1,34 @@
+package OOPS;
+//one thing in many forms”-->PolyMorphism
+//Polymorphism allows one interface (like a method name or object reference)
+//to represent different underlying forms (implementations).
+//Two Types of Polymorphism
+    //1)Compile-time Polymorphism or Static Polymorphism At compile time example Method Overloading
+   //2)Runtime Polymorphism or Dynamic Polymorphism At runtime example Method Overriding
+public class dynamicTimeDispatchorRunTimePolymorphism {
+
+	public static void main(String[] args) {
+		polyParent obj=new polyParent();
+		obj.show();
+		
+		obj=new polyChild1();
+
+	}
+
+}
+class polyParent{
+	public void show() {
+		System.out.println("In PolyParent class");
+	}
+}
+class polyChild1 extends polyParent{
+	public void show() {
+		System.out.println("In PolyChild1 class");
+	}
+	
+}
+class polyChild2{
+	public void show() {
+		System.out.println("In PolyChild2 class");
+	}
+}

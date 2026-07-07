@@ -1,0 +1,18 @@
+package OOPS;
+//Both are same only one difference is string buffer is thread safe and string builder is not thread safe
+//Both are mutable can be change it wont create a different object 
+//Reason 
+//it adds characters inside the same buffer (no new object created) — until the capacity is full(Initial Capacity is 16).
+//If it exceeds, Java automatically increases the capacity (usually (oldCapacity * 2) + 2).
+public class StringBufferandBuilder {
+
+	public static void main(String[] args) {
+StringBuffer sb=new StringBuffer();
+System.out.println("The initial capacity of String Buffer is :"+sb.capacity());
+sb.append("Siva Kumar java");
+System.out.println("The capacity now is after append :"+sb.capacity());
+sb.append("is");
+System.out.println("After The Initial capacityis completed :"+sb.capacity());
+	}
+
+}

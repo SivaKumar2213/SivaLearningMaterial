@@ -1,0 +1,27 @@
+package OOPS;
+//Method Overriding in Java happens when a subclass (child class) provides its own implementation 
+//of a method that is already defined in its superclass (parent class).
+//In other words,
+//the child class redefines a method that it inherits from the parent class.
+public class methodOverRiding {
+
+	public static void main(String[] args) {
+           child c=new child();
+           c.showMobileDetails();
+           parent p= new parent();
+           p.showMobileDetails();
+           parent p1=new child();
+           p1.showMobileDetails();
+	}
+
+}
+class parent{
+	public void showMobileDetails() {
+		System.out.println("Mobile name is Samsung");
+	}
+}
+class child extends parent{
+	public void showMobileDetails() {
+		System.out.println("Mobile name is Apple");
+	}
+}

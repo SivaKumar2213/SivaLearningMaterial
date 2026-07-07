@@ -1,0 +1,32 @@
+package OOPS;
+
+public class classAndObject {
+
+	public static void main(String[] args) {
+int num1=5;
+int num2=8;
+
+	}
+
+}
+
+ /*class calculator{
+	
+	public int add() {
+		int r;
+		return r;
+	}
+}*/
+ //If we Uncomment the code we will get the error
+//Does not assigned default value because variable r is in method scope
+// r here is a local variable inside the method add().
+//Java does not automatically initialize local variables — they must be explicitly assigned before use.
+//Since you try to return r; before assigning any value, the compiler throws:
+
+class calculator{
+	int r;
+	public int add() {
+		return r;
+	}
+}
+

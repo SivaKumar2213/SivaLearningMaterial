@@ -1,0 +1,19 @@
+package OOPS;
+
+public class classAndObject {
+
+	public static void main(String[] args) {
+int num1=5;
+int num2=8;
+
+	}
+
+}
+
+ class calculator{
+	 int r;
+	public int add() {
+		
+		return r;
+	}
+}

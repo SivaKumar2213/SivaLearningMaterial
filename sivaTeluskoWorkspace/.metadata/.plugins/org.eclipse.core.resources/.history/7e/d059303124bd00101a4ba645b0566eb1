@@ -1,0 +1,11 @@
+package OOPS;
+//I am using the classes in the same file but we can use in a different file
+//For Inheritance we does not even require a java file , the class file is enough which generate after compile
+public class inheritance {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+

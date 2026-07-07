@@ -1,0 +1,68 @@
+package Com.BasicsHibernate.model;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+@Entity
+public class ProductTable {
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Integer productId;
+private String productName;
+private String productAmount;
+private String purchaserName;
+
+//If we add PaymentTable mapping like below  then it is  Bidirectional
+@OneToOne(cascade = CascadeType.ALL)//If we add cascade then what changes are done in ProductTable will happen in Payment Table also
+
+private PaymentTable paymentTable;
+
+public Integer getProductId() {
+	return productId;
+}
+
+@Override
+public String toString() {
+	return "ProductTable [productId=" + productId + ", productName=" + productName + ", productAmount=" + productAmount
+			+ ", purchaserName=" + purchaserName + "]";
+}
+
+public void setProductId(Integer productId) {
+	this.productId = productId;
+}
+
+public String getProductName() {
+	return productName;
+}
+
+public void setProductName(String productName) {
+	this.productName = productName;
+}
+
+public String getProductAmount() {
+	return productAmount;
+}
+
+public void setProductAmount(String productAmount) {
+	this.productAmount = productAmount;
+}
+
+public String getPurchaserName() {
+	return purchaserName;
+}
+
+public void setPurchaserName(String purchaserName) {
+	this.purchaserName = purchaserName;
+}
+
+/*
+ * public PaymentTable getPaymentTable() { return paymentTable; }
+ * 
+ * public void setPaymentTable(PaymentTable paymentTable) { this.paymentTable =
+ * paymentTable; }
+ */
+
+}

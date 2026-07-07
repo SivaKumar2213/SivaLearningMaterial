@@ -1,0 +1,13 @@
+package Com.BasicsHibernate.model;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class LaptopDetails {
+private Integer lapTopId;
+private String laptopName;
+private String price;
+private byte[] image;
+private char[] laptopDetailsText;
+
+}

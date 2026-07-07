@@ -1,0 +1,21 @@
+package OOPS;
+
+public class staticBlock {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+class Mobile1{
+	String name;
+	int price;
+	static String type;
+	
+	public Mobile1() {
+		name="";
+		price=20;
+		type="Phone";
+	}
+	
+}

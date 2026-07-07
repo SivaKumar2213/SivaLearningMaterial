@@ -1,0 +1,95 @@
+package Com.basicsHibernateConnections;
+
+import java.util.Properties;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+import Com.BasicsHibernate.model.PaymentTables;
+import Com.BasicsHibernate.model.ProductTables;
+
+public class HibernateOneToOneMapping {
+
+	public static void main(String[] args) {
+               Configuration config=null;
+               Session session=null;
+               Transaction transaction=null;
+               boolean flag=false;
+               try {
+            	   config=new Configuration();
+            	   config.setProperties(new Properties()
+            			   {
+            		   {
+            			   load(HibernateOneToOneMapping.class.getClassLoader().getResourceAsStream("hibernate1.properties"));
+            		   }
+            		   
+            			   });
+            	   config.addAnnotatedClass(PaymentTables.class);
+            	   config.addAnnotatedClass(ProductTables.class);
+            	   PaymentTables pt=new PaymentTables();
+            	   PaymentTables pt1=new PaymentTables();
+            	   ProductTables pdt=new ProductTables();
+            	   ProductTables pdt1=new ProductTables();
+            	   session=config.buildSessionFactory().openSession();
+            	   transaction=session.beginTransaction();
+            	   //UniDirection
+					
+					  pt.setPayerName("Siva Kumar"); pt.setPaymentAmount("1500");
+					  pt.setPaymentMode("Cash"); pdt.setProductName("Shirt");
+					  pdt.setProductAmount(pt.getPaymentAmount());
+					  pdt.setPurchaserName(pt.getPayerName()); pt.setProductTable(pdt);
+					  
+					  pt1.setPayerName("Bala"); pt1.setPaymentAmount("15000");
+					  pt1.setPaymentMode("GPAY"); pdt1.setProductName("Mobile");
+					  pdt1.setProductAmount(pt1.getPaymentAmount());
+					  pdt1.setPurchaserName(pt1.getPayerName()); pt1.setProductTable(pdt1);
+					 
+            	   //UniDirection
+            	   //Bidirection
+            	   
+            	   ProductTables Bipdt=new ProductTables();
+            	   ProductTables Bipdt1=new ProductTables();
+            	   PaymentTables Bipt=new PaymentTables();
+            	   PaymentTables Bipt1=new PaymentTables();
+            	   Bipdt.setProductName("Mobile Cover");
+            	   Bipdt.setProductAmount("250");
+            	   Bipdt.setPurchaserName("Bala");
+            	   Bipt.setPayerName(Bipdt.getPurchaserName());
+            	   Bipt.setPaymentAmount(Bipdt.getProductAmount());
+            	   Bipt.setPaymentMode("GPAY");
+            	  
+            	   Bipdt1.setProductName("Pant");
+            	   Bipdt1.setProductAmount("1200");
+            	   Bipdt1.setPurchaserName("Siva Kumar");
+            	   Bipt1.setPayerName(Bipdt1.getPurchaserName());
+            	   Bipt1.setPaymentAmount(Bipdt1.getProductAmount());
+            	   Bipt1.setPaymentMode("Cash");
+            	 
+            	   //Bidirection
+            	  // session.persist(pt);
+            	   //session.persist(pt1);
+            	   session.persist(Bipdt);
+            	   session.persist(Bipdt1);
+            	   flag=true;
+            	   
+
+               }
+               catch(HibernateException e) {
+            	   e.printStackTrace();
+               }
+               catch(Exception e1) {
+            	   e1.printStackTrace();
+               }
+               finally {
+            	   if(flag) {
+            		   transaction.commit();
+            	   }else {
+            		   transaction.rollback();
+            	   }
+            	   session.close();
+               }
+	}
+
+}

@@ -1,0 +1,7 @@
+package Com.BasicsHibernate.model;
+
+public class OrderDetails {
+private Integer orderId;
+private String orderAmount;
+private String orderProductName;
+}

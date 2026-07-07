@@ -1,0 +1,15 @@
+package OOPS;
+
+public class parameterizedConstructor {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+class HumanParamaterized{
+	private int age;
+	private String name;
+	
+}

@@ -1,0 +1,37 @@
+package Interface;
+//1)If a method is declared as abstract then the class should be abstract class
+    //we don't know the implementation the implementation of the method should take care of the sub class 
+//2)we cannot create a object for abstract class , the class which extends the abstarct class and provide implemetation 
+   //of the all abstract methods are called concrete class and we can create object for concrete class
+// an abstarct class contain zero abstarct method and non abstarct method
+//or both abstarct method and non abstarct method
+//or  only abstarct method
+public class abstractClass {
+
+	public static void main(String[] args) {
+		Car car=new maruti();
+		car.drive();
+		car.playMusic();
+		car.model();
+	}
+
+}
+abstract class Car{
+	public abstract void drive();
+	public abstract void model();
+	public void playMusic(){
+		System.out.println("Play Music.....");
+	}
+}
+	class maruti extends Car{//-------Concrete class-----------
+
+		public void drive() {
+			System.out.println("Driving A Maruti Car.....");
+		}
+
+		public void model() {
+			System.out.println("The tOp End Model Maruti Car");
+		}
+		
+	}
+

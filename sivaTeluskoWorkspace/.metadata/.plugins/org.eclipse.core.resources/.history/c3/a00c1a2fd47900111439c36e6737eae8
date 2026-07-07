@@ -1,0 +1,10 @@
+package Com.BasicsHibernate.model;
+
+public class PaymentTableUniDirection {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

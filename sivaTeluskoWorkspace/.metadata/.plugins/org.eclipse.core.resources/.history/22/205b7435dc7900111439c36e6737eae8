@@ -1,0 +1,20 @@
+package Com.BasicsHibernate.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class CustomerDetails {
+private Integer CustomerId;
+private String customerName;
+private Integer customerAge;
+@OneToMany(cascade = CascadeType.ALL)
+@JoinColumn(name = "CustomerId")
+private List<OrderDetails> orderArrayList=new ArrayList<>();
+
+}

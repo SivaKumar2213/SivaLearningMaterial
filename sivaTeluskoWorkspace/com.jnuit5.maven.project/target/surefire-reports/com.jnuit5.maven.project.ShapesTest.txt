@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.jnuit5.maven.project.ShapesTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.108 s <<< FAILURE! -- in com.jnuit5.maven.project.ShapesTest
+com.jnuit5.maven.project.ShapesTest.testAreaOfCircle -- Time elapsed: 0.057 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Area of Circle is Wrong for input value 8 the excepted value should be 200.96 ==> expected: <75.0> but was: <200.96>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:70)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:925)
+	at com.jnuit5.maven.project.ShapesTest.testAreaOfCircle(ShapesTest.java:15)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+

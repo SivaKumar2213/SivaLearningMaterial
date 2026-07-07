@@ -1,0 +1,26 @@
+package InputAndOutput;
+//Serialization is the process of converting a Java object into a sequence of bytes 
+//so that the object can be:1)stored in a file,2)transferred over a network,3)saved in a database
+//These bytes can later be converted back into the same object, which is called Deserialization.
+//Serializable interface which is present in package java.io.Serializable is used
+//Serializable interface is A marker interface,It has no methods
+//It tells JVM: “This object is allowed to be serialized.”
+//To serialize an object, the class must implement the Serializable interface.
+//if a class does NOT implement Serializable but we try to serialize it?
+//JVM throws:java.io.NotSerializableException
+//Streams used for Serialization
+//To write the serialized object to a file, we typically use:
+//FileOutputStream-->Writes raw bytes to a file.
+//ObjectOutputStream-->Converts the object → bytes (Serialization)
+//Improving performance : You can wrap the stream inside : BufferedOutputStream
+//BufferedOutputStream -> This reduces the number of disk hits and makes writing faster and more efficient.
+
+
+public class serialization {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

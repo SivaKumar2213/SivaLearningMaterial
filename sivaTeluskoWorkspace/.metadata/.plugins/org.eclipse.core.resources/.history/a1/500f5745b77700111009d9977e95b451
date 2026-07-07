@@ -1,0 +1,10 @@
+package Com.basicsHibernateConnections;
+
+public class UpdateOrDeleteLaunchApplicationClass {
+
+	public static void main(String[] args) {
+           
+		
+	}
+
+}
